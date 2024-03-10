@@ -113,6 +113,7 @@ const App = () => {
       memoryData.forEach((memory) => {
         memory.class = 'hidden'
       })
+      window.location.reload()
     }
 
     setMemoryData(newMemoryData)
