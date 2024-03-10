@@ -89,7 +89,6 @@ const App = () => {
       { ...memoryData[memoryIdx], id: memoryIdx },
     ])
 
-    console.log(selectedItems)
     if (clickedTimes < 2) {
       newMemoryData[memoryIdx].class = 'shown'
     } else if (
