@@ -15,58 +15,60 @@ interface MemoryData {
 const App = () => {
   const [selectedItems, setSelectedItems] = useState<any>([])
   const [clickedTimes, setClickedTimes] = useState<number>(0)
-  const [memoryData, setMemoryData] = useState<MemoryData[]>([
-    {
-      name: 'duck',
-      class: 'hidden',
-      src: duck,
-    },
-    {
-      name: 'duck',
-      class: 'hidden',
-      src: duck,
-    },
-    {
-      name: 'egg',
-      class: 'hidden',
-      src: egg,
-    },
-    {
-      name: 'egg',
-      class: 'hidden',
-      src: egg,
-    },
-    {
-      name: 'book',
-      class: 'hidden',
-      src: book,
-    },
-    {
-      name: 'book',
-      class: 'hidden',
-      src: book,
-    },
-    {
-      name: 'ball',
-      class: 'hidden',
-      src: ball,
-    },
-    {
-      name: 'ball',
-      class: 'hidden',
-      src: ball,
-    },
-    {
-      name: 'flower',
-      class: 'hidden',
-      src: flower,
-    },
-    {
-      name: 'flower',
-      class: 'hidden',
-      src: flower,
-    },
-  ])
+  const [memoryData, setMemoryData] = useState<MemoryData[]>(
+    [
+      {
+        name: 'duck',
+        class: 'hidden',
+        src: duck,
+      },
+      {
+        name: 'duck',
+        class: 'hidden',
+        src: duck,
+      },
+      {
+        name: 'egg',
+        class: 'hidden',
+        src: egg,
+      },
+      {
+        name: 'egg',
+        class: 'hidden',
+        src: egg,
+      },
+      {
+        name: 'book',
+        class: 'hidden',
+        src: book,
+      },
+      {
+        name: 'book',
+        class: 'hidden',
+        src: book,
+      },
+      {
+        name: 'ball',
+        class: 'hidden',
+        src: ball,
+      },
+      {
+        name: 'ball',
+        class: 'hidden',
+        src: ball,
+      },
+      {
+        name: 'flower',
+        class: 'hidden',
+        src: flower,
+      },
+      {
+        name: 'flower',
+        class: 'hidden',
+        src: flower,
+      },
+    ].sort(() => Math.random() - 0.5)
+  )
 
   const handleMemoryClick = (memoryIdx: number) => {
     let idExists = false
@@ -104,6 +106,15 @@ const App = () => {
       setSelectedItems([])
       setClickedTimes(0)
     }
+
+    const allGuessed = memoryData.every((item) => item.class === 'shown')
+
+    if (allGuessed) {
+      memoryData.forEach((memory) => {
+        memory.class = 'hidden'
+      })
+    }
+
     setMemoryData(newMemoryData)
   }
 
